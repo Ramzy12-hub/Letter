@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Little Something for Khayrat 💜</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="stars" id="stars"></div>
+<div class="moon">☾</div>
+<div class="container">
+<div class="card">
+    <!-- PAGE 1 -->
+    <section class="page active" id="page1">
+        <div class="label">A little something for you</div>
+        <span class="flower">🌙</span>
+        <h1 class="purple-text">
+            If You Only Knew...
+        </h1>
+        <p>
+            I know it's been a little quiet between us.
+            But there's something I wanted you to see.
+        </p>
+        <div class="divider">✦ ♡ ✦</div>
+        <button onclick="showPage(2)">
+            Open this little surprise ✨
+        </button>
+
+        <div class="footer">
+            MADE WITH A LITTLE THOUGHT & A LOT OF HEART
+        </div>
+
+    </section>
+
+    <!-- PAGE 2 -->
+
+    <section class="page" id="page2">
+
+        <button class="back-button"
+                onclick="showPage(1)"
+                aria-label="Go back">←</button>
+
+        <div class="label">Just for you</div>
+
+        <span class="flower">💜</span>
+
+        <h1>
+            Hey, <span class="purple-text">Khayrat</span>
+        </h1>
+
+        <p>
+            I wasn't sure how to put this into words,
+            so I thought I'd create a little corner
+            of the internet just for you.😂
+        </p>
+
+        <p>
+            Sometimes life gets busy, we go quiet,
+            and we don't always show the people
+            we care about the attention they deserve.
+        </p>
+
+        <div class="divider">— ♡ —</div>
+
+        <p>
+            But sometimes, a little distance doesn't
+            erase the good things worth appreciating.
+        </p>
+
+        <button onclick="showPage(3)">
+            There's more 💫
+        </button>
+
+    </section>
+
+    <!-- PAGE 3 -->
+
+    <section class="page" id="page3">
+
+        <button class="back-button"
+                onclick="showPage(2)"
+                aria-label="Go back">←</button>
+
+        <div class="label">A little reminder</div>
+
+        <span class="flower">✨</span>
+
+        <h1 class="purple-text">
+            You Matter, Khayrat
+        </h1>
+
+        <p>
+            I may not always get everything right,
+            and sometimes I don't show what I mean
+            as well as I should.
+        </p>
+
+        <p>
+            But I want you to know that you deserve
+            genuine care, thoughtful moments,
+            and people who make you feel appreciated.
+        </p>
+
+        <div class="divider">♡</div>
+
+        <p>
+            And today, I simply wanted to remind you
+            of how special it is to be yourself.
+        </p>
+
+        <button onclick="showPage(4)">
+            One last thing 💌
+        </button>
+
+    </section>
+
+    <!-- PAGE 4 -->
+
+    <section class="page" id="page4">
+
+        <button class="back-button"
+                onclick="showPage(3)"
+                aria-label="Go back">←</button>
+
+        <div class="label">From me to you</div>
+
+        <span class="flower">🌌</span>
+
+        <h1 class="purple-text">
+            No Pressure. Just Care.
+        </h1>
+
+        <div class="note">
+            <p>
+                I made this to bring a little softness
+                to your day.
+            </p>
+            <p>
+                Whatever kind of day you're having,
+                I hope something makes you smile tonight.
+                I'd love to have a conversation with you.
+            </p>
+            <p>
+                You deserve good things, Khayrat. 💜
+            </p>
+        </div>
+        <p class="signature">
+        </p>
+
+        <button onclick="celebrate()">
+            Send a little stardust ✨
+        </button>
+
+        <div class="footer">
+            THIS LITTLE MOMENT WAS MADE JUST FOR YOU
+        </div>
+
+    </section>
+
+</div>
+</div>
+
+<script>
+// CREATE RANDOM STARS
+const stars = document.getElementById("stars");
+for (let i = 0; i < 90; i++) {
+    const star = document.createElement("span");
+    star.className = "star";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+
+    star.style.animationDelay =
+        Math.random() * 4 + "s";
+
+    star.style.animationDuration =
+        (2 + Math.random() * 4) + "s";
+
+    stars.appendChild(star);
+}
+
+// SWITCH BETWEEN PAGES
+
+function showPage(pageNumber) {
+
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
+
+    document.getElementById("page" + pageNumber)
+        .classList.add("active");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+// CREATE FLOATING HEARTS
+
+function createHeart() {
+
+    const heart = document.createElement("span");
+
+    heart.className = "heart";
+
+    const symbols = ["💜", "✨", "♡", "🌸"];
+
+    heart.textContent =
+        symbols[Math.floor(Math.random() * symbols.length)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (14 + Math.random() * 18) + "px";
+
+    heart.style.animationDuration =
+        (4 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 8500);
+}
+
+// FINAL SURPRISE
+
+function celebrate() {
+
+    for (let i = 0; i < 35; i++) {
+        setTimeout(createHeart, i * 100);
+    }
+
+    const button = document.querySelector("#page4 button:not(.back-button)");
+
+    button.textContent = "A little love for your day 💜";
+
+}
+
+// GENTLE BACKGROUND ANIMATION
+
+setInterval(() => {
+
+    if (Math.random() > 0.5) {
+        createHeart();
+    }
+
+}, 1800);
+
+</script>
+
+</html>
